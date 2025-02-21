@@ -14,7 +14,7 @@ def process_file(file_path):
         else:
             output_text += f"{text}\n"
     base_name = os.path.splitext(file_path)[0]
-    output_file = f"{base_name}_transcript.txt"
+    output_file = f"{base_name}.txt"
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(output_text)
     print(f"Transcription saved to {output_file}")
@@ -22,9 +22,11 @@ def process_file(file_path):
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python whis.py <file_path>")
-        sys.exit(1)
-    file_path = sys.argv[1]
+        file_path = input("Enter file path: ")
+    else:
+        file_path = sys.argv[1]
     if not os.path.isfile(file_path):
         print("Provided path is not a file.")
         sys.exit(1)
     process_file(file_path)
+
